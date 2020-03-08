@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +27,7 @@
     "@ng-select/ng-select": "^2.16.3",
     "blob-util": "^2.0.2",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
     "json-serve": "^0.1.0",
     "moment": "^2.24.0",
     "ng2-trim-directive": "^2.3.2",
