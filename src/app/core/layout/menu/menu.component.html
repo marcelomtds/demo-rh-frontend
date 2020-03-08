@@ -1,0 +1,32 @@
+<aside class="main-sidebar">
+  <section class="sidebar" style="height: auto;">
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="treeview">
+        <a style="cursor: pointer;">
+          <em class="fa fa-user icon-size icon-item-menu"></em>
+          <span>Colaborador</span>
+          <span class="pull-right-container">
+            <em class="fa fa-angle-left pull-right"></em>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="[ '/colaborador' ]"><em class="fa fa-search"></em>Buscar</a></li>
+          <li><a [routerLink]="[ '/colaborador/incluir' ]"><em class="fa fa-plus"></em>Cadastrar</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a style="cursor: pointer;">
+          <em class="fa fa-briefcase icon-item-menu"></em>
+          <span>Cargo</span>
+          <span class="pull-right-container">
+            <em class="fa fa-angle-left pull-right"></em>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="[ '/cargo' ]"><em class="fa fa-search"></em>Buscar</a></li>
+          <li><a [routerLink]="[ '/cargo/incluir' ]"><em class="fa fa-plus"></em>Cadastrar</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>
