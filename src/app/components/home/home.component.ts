@@ -14,11 +14,11 @@ export class HomeComponent implements OnDestroy {
     }, 1000);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.interval = null;
   }
 
-  get getDate(): string {
+  public get getDate(): string {
     return new Date().toLocaleString().replace(',', ' -');
   }
 }

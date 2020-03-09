@@ -3,7 +3,6 @@ import * as moment from 'moment';
 export default class Util {
 
     static readonly IMAGEFORMATS = ['jpeg', 'jpg', 'png'];
-    static readonly ATTACHMENTFORMATS = ['doc', 'docx', 'pdf', 'jpg', 'jpeg', 'png', 'xlsx', 'xls', 'txt'];
     static readonly FILESIZE = 10485760;
 
     static isFormatoImagemValido(imagem: File): boolean {

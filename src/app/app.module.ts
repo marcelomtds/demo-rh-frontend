@@ -4,6 +4,7 @@ import localePt from '@angular/common/locales/pt';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular4-social-login';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,14 @@ import { SharedService } from './core/services/shared.service';
 import { SharedModule } from './shared/shared.module';
 registerLocaleData(localePt);
 
+const google_oauth_client_id = '531640362638-ica4nsti141nkk06dk3islhgft2lno6b.apps.googleusercontent.com';
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(google_oauth_client_id)
+  }
+]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +32,7 @@ registerLocaleData(localePt);
     HeaderComponent
   ],
   imports: [
+    SocialLoginModule.initialize(config),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

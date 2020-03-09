@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService as OAuth2 } from 'angular4-social-login';
 import { AuthGuard } from '../../guards/auth.guard';
-import { SharedService } from '../../services/shared.service';
 import { Usuario } from '../../model/model/usuario.model';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 
   public constructor(
     private sharedService: SharedService,
-    public authGuardService: AuthGuard
+    public authGuardService: AuthGuard,
+    private socioAuthService: OAuth2
   ) { }
 
   public ngOnInit(): void {
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
 
   public signOut(): void {
     this.sharedService.removeUserSession();
+    this.socioAuthService.signOut();
     window.location.reload();
   }
 

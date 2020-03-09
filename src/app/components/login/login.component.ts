@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Messages } from '../../shared/messages/messages';
-import { Autenticacao } from '../../core/model/model/autenticacao.model';
-import { MessageService } from '../../core/services/message.service';
-import { AuthService } from '../../core/services/auth.service';
-import { SharedService } from '../../core/services/shared.service';
+import { AuthService as OAuth2, GoogleLoginProvider } from 'angular4-social-login';
+import { Usuario } from 'src/app/core/model/model/usuario.model';
 import Util from 'src/app/shared/util/util';
+import { Autenticacao } from '../../core/model/model/autenticacao.model';
+import { AuthService } from '../../core/services/auth.service';
+import { MessageService } from '../../core/services/message.service';
+import { SharedService } from '../../core/services/shared.service';
+import { Messages } from '../../shared/messages/messages';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private formBuilder: FormBuilder,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private socioAuthService: OAuth2
   ) {
   }
 
@@ -54,14 +57,32 @@ export class LoginComponent implements OnInit {
         ...this.form.value
       };
       this.service.login(formValue).subscribe(response => {
-        this.sharedService.setUserSession(response.result);
-        this.sharedService.updateTemplateSet(true);
-        this.router.navigate(['/home']);
+        this.login(response.result);
       });
     } else {
       this.isInvalidForm = true;
       this.messageService.sendMessageError(Messages.CAMPO_OBRIGATORIO);
     }
+  }
+
+  public singInGoogle(): void {
+    this.messageService.clearAllMessages();
+    this.socioAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (response) => {
+        const usuario: Usuario = {
+          nomeCompleto: response.name,
+          perfilDescricao: 'Visitante - Google',
+          imagem: response.photoUrl
+        };
+        this.login(usuario);
+      }
+    );
+  }
+
+  private login(usuario: Usuario): void {
+    this.sharedService.setUserSession(usuario);
+    this.sharedService.updateTemplateSet(true);
+    this.router.navigate(['/home']);
   }
 
 }
