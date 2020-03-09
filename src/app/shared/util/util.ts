@@ -10,6 +10,14 @@ export default class Util {
         return this.IMAGEFORMATS.findIndex(x => x.toLocaleLowerCase() === array[array.length - 1].toLocaleLowerCase()) >= 0;
     }
 
+    static calcularIdadeAno(data: Date): number {
+        return moment().diff(data, 'years');
+    }
+
+    static calcularIdadeMes(data: Date): number {
+        return moment().diff(data, 'month');
+    }
+
     static isCpfValido(cpf: string): boolean {
         if (cpf == null) {
             return false;

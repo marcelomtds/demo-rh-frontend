@@ -87,8 +87,9 @@
                       <button title="Excluir" (click)="onClickRemove(row)" class="btn btn-danger btn-left"><em
                           class="fa fa-remove"></em>
                       </button>
-                      <button *ngIf="row.imagem" title="Download da Imagem" (click)="onClickDownload(row)" class="btn btn-primary btn-left"><em
-                          class="fa fa-cloud-download"></em></button>
+                      <button title="Visualizar" (click)="onClickOpenModalVisualizar(row.id)"
+                        class="btn btn-primary btn-left"><em class="fa fa-eye"></em>
+                      </button>
                     </td>
                     <td>
                       <img src="{{ row.imagem || '../../../../../../assets/img/sem-foto.jpg' }}" width="150px"

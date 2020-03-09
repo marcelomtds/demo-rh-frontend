@@ -13,13 +13,13 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <label for="nomeCompleto">Imagem</label>
-                <div *ngIf="form.controls.imagem.value" class="form-group" style="text-align: end;">
+                <div *ngIf="form.controls.imagem.value" class="form-group" style="text-align: left;">
                   <button title="Remover Imagem" class="btn btn-danger" type="button" (click)="onClickRemoveImage()"><em
                       class="fa fa-close"></em></button>
                 </div>
                 <div class="form-group">
-                  <img src="{{ form.value.imagem || '../../../../../../assets/img/sem-foto.jpg' }}" width="100%"
-                    height="100%" class="user-image" alt="Imagem do Colaborador">
+                  <img src="{{ form.value.imagem || '../../../../../../assets/img/sem-foto.jpg' }}" width="50%"
+                    height="50%" class="user-image" alt="Imagem do Colaborador">
                 </div>
               </div>
             </div>

@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CpfPipe } from './cpf.pipe';
+import { IdadePipe } from './idade.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    CpfPipe
+    CpfPipe,
+    IdadePipe
   ],
   exports: [
-    CpfPipe
+    CpfPipe,
+    IdadePipe
   ]
 })
 export class PipeModule { }
